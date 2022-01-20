@@ -6,6 +6,7 @@ const config = require("./config.json");
 const prefix = "!";
 
 client.on("ready", () => {
+  console.clear()
   console.log(`${client.user.tag} is now online!`)
     function randomStatus() {
         let status = [
