@@ -6,5 +6,5 @@ Command Features:
 
 Modules Required:
 ```
-- discord.js
+- discord.js (npm install discord.js12@npm:discord.js@12.4.1)
 ```
