@@ -1,9 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const { MessageEmbed } = require("discord.js");
-
-const token = "discord bot token";
-const prefix = "!";
+const config = require("./config.json");
 
 client.on("ready", () => {
   console.log(`${client.user.tag} now online!`)
@@ -11,7 +9,7 @@ client.on("ready", () => {
         let status = [
           `🌏 ${client.guilds.cache.size.toLocaleString()} servers`,
           `👥 ${client.guilds.cache.reduce((a, b) => a + b.memberCount, 0).toLocaleString()} users`,
-          `👋 My current prefix is ${prefix}`
+          `👋 My current prefix is ${config.prefix}`
         ]; // You can change it whatever you want.
         let rstatus = Math.floor(Math.random() * status.length);
     
@@ -26,12 +24,12 @@ client.on("ready", () => {
     });
 
 client.on("message", async message => {
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
 
     if (message.author.bot) {
         return;
-    } else if (!message.content.startsWith(prefix)) {
+    } else if (!message.content.startsWith(config.prefix)) {
         return;
     } else if (message.channel.type === "dm") {
         return;
@@ -47,4 +45,4 @@ client.on("message", async message => {
     }
 });
 
-client.login(token);
+client.login(config.token);
