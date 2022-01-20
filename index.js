@@ -1,5 +1,4 @@
-const { Client, Intents, MessageEmbed } = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const { MessageEmbed } = require('discord.js');
 const config = require("./config.json");
 
 const prefix = "!";
@@ -24,7 +23,7 @@ client.on("ready", () => {
       setInterval(randomStatus, 30000);
     });
 
-client.on("message", async message => {
+    client.on("message", async message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
 
